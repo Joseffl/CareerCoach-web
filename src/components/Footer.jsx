@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { ArrowRight, Menu, X, Target, TrendingUp, Users, Zap, CheckCircle, Clock, DollarSign, Star, BookOpen, BarChart3, Award } from 'lucide-react';
+import { Target,  } from 'lucide-react';
 
 const Footer = () => (
   <footer className="bg-gray-900 text-gray-300 py-16 px-6">

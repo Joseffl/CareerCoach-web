@@ -6,10 +6,13 @@ const Navigation = ({ isMenuOpen, setIsMenuOpen, scrolled }) => {
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
+              <a href="/" className="flex items-center gap-2">
+
             <div className="w-10 h-10 rounded-xl bg-linear-to-br from-cyan-600 to-teal-600 flex items-center justify-center">
               <Target className="text-white" size={24} />
             </div>
             <span className="text-2xl font-bold gradient-text">CareerCoach</span>
+              </a>
           </div>
           
           <div className="hidden md:flex items-center gap-8">

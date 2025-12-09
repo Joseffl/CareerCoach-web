@@ -1,4 +1,3 @@
-import React from 'react';
 import { Target, BarChart3, Star, TrendingUp, Users, Award } from 'lucide-react';
 
 const FeaturesSection = () => {
@@ -38,14 +37,12 @@ const FeaturesSection = () => {
   return (
     <section id="features" className="py-20 px-6 bg-gray-50">
       <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Everything you need to go from zero to hired
           </h2>
         </div>
 
-        {/* Features Grid */}
         <div className="grid md:grid-cols-3 gap-8">
           {features.map((feature, idx) => {
             const IconComponent = feature.icon;

@@ -1,10 +1,8 @@
-import React from 'react';
 import { ArrowRight, Zap, CheckCircle } from 'lucide-react';
 
 const HeroSection = () => {
   return (
     <section className="pt-32 pb-20 px-6 relative overflow-hidden">
-      {/* Background gradients */}
       <div className="absolute inset-0 bg-linear-to-br from-cyan-50 via-white to-teal-50"></div>
       <div 
         className="absolute inset-0 opacity-5" 
@@ -16,23 +14,19 @@ const HeroSection = () => {
       
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center max-w-5xl mx-auto animate-fadeInUp">
-          {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-cyan-100 rounded-full text-cyan-700 font-semibold text-sm mb-6">
             <Zap size={16} />
             Stop wasting months learning the wrong things
           </div>
           
-          {/* Main Heading */}
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
             Learn smarter, get hired <span className="gradient-text">faster</span>
           </h1>
           
-          {/* Subheading */}
           <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed max-w-3xl mx-auto">
             AI-powered learning roadmaps that adapt to your skills, goals, and the real job market. From confused beginner to employed developer.
           </p>
           
-          {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
             <button className="px-8 py-4 bg-cyan-600 text-white rounded-xl font-semibold text-lg hover:bg-cyan-700 transition-all hover:shadow-xl hover:shadow-cyan-600/30 inline-flex items-center gap-2 group">
               Get Your Free Roadmap
@@ -59,7 +53,6 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Hero Image/Dashboard Preview */}
           <div className="relative animate-float">
             <div className="gradient-border rounded-2xl p-8 bg-white shadow-2xl">
               <div className="flex items-center gap-4 mb-6">
