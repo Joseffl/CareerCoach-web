@@ -1,69 +1,44 @@
-import React from 'react';
+const steps = [
+  {
+    number: '01',
+    title: 'Choose a path',
+    description: 'Start with the career you want to explore.',
+  },
+  {
+    number: '02',
+    title: 'Meet the right expert',
+    description: 'Browse people with relevant experience and context.',
+  },
+  {
+    number: '03',
+    title: 'Book a session',
+    description: 'Schedule a simple 1-on-1 conversation.',
+  },
+  {
+    number: '04',
+    title: 'Move with clarity',
+    description: 'Leave with sharper decisions and next steps.',
+  },
+];
 
 const HowItWorksSection = () => {
-  const steps = [
-    {
-      number: "01",
-      title: "Tell us your goal",
-      description: "Frontend Dev? ML Engineer? Product Designer? We'll assess your current skills with real challenges.",
-      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&h=600&fit=crop"
-    },
-    {
-      number: "02",
-      title: "Get your personalized roadmap",
-      description: "Visual timeline showing exactly what to learn, in what order, with time estimates and prerequisites mapped.",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop"
-    },
-    {
-      number: "03",
-      title: "Follow curated resources",
-      description: "We rank courses, tutorials, and projects by effectiveness, freshness, and value—not by who pays us.",
-      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop"
-    },
-    {
-      number: "04",
-      title: "Track & validate progress",
-      description: "Check off modules, validate skills with projects, get weekly progress reports, and adjust as you go.",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop"
-    }
-  ];
-
   return (
     <section id="how-it-works" className="py-20 px-6">
       <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Your path to employment in 4 steps
-          </h2>
+        <div className="text-center max-w-3xl mx-auto mb-14">
+          <p className="text-sm uppercase tracking-[0.28em] text-cyan-700 mb-5">How it works</p>
+          <h2 className="display-face text-4xl md:text-6xl leading-none text-slate-950 mb-6">A simple flow from interest to action</h2>
         </div>
 
-        {/* Steps */}
-        <div className="space-y-24">
+        <div className="grid lg:grid-cols-4 gap-6">
           {steps.map((step, idx) => (
-            <div 
-              key={idx} 
-              className={`flex flex-col ${idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-12`}
+            <div
+              key={step.number}
+              className={`rounded-[2rem] p-8 border shadow-[0_20px_50px_rgba(15,23,42,0.05)] transition-transform duration-300 hover:-translate-y-1 animate-drift-in ${idx === 1 ? 'animation-delay-150' : idx === 2 ? 'animation-delay-300' : idx === 3 ? 'animation-delay-500' : ''} ${idx === 2 ? 'bg-cyan-700 text-white border-cyan-700' : 'bg-white/80 border-white/70'}`}
             >
-              {/* Image */}
-              <div className="flex-1">
-                <img 
-                  src={step.image} 
-                  alt={step.title} 
-                  className="rounded-2xl shadow-xl w-full"
-                />
-              </div>
-              
-              {/* Content */}
-              <div className="flex-1">
-                <div className="text-6xl font-bold gradient-text mb-4">
-                  {step.number}
-                </div>
-                <h3 className="text-3xl font-bold mb-4">{step.title}</h3>
-                <p className="text-xl text-gray-600 leading-relaxed">
-                  {step.description}
-                </p>
-              </div>
+              <div className={`text-sm uppercase tracking-[0.25em] mb-5 ${idx === 2 ? 'text-cyan-100' : 'text-slate-400'}`}>Step {step.number}</div>
+              <h3 className={`display-face text-3xl leading-tight mb-3 ${idx === 2 ? 'text-white' : 'text-slate-950'}`}>{step.title}</h3>
+              <p className={`${idx === 2 ? 'text-cyan-50' : 'text-slate-600'}`}>{step.description}</p>
             </div>
           ))}
         </div>

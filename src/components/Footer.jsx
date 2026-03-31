@@ -1,58 +1,58 @@
-import { Target,  } from 'lucide-react';
+import { Compass } from 'lucide-react';
 
 const Footer = () => (
-  <footer className="bg-gray-900 text-gray-300 py-16 px-6">
+  <footer className="bg-slate-950 text-slate-300 py-16 px-6">
     <div className="max-w-7xl mx-auto">
       <div className="grid md:grid-cols-4 gap-8 mb-12">
         <div>
-          <h3 className="font-bold text-white mb-4">Product</h3>
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-9 h-9 rounded-2xl bg-white text-slate-950 flex items-center justify-center">
+              <Compass size={18} />
+            </div>
+            <span className="text-lg font-semibold text-white">Pathway</span>
+          </div>
+          <p className="text-slate-400 leading-relaxed">
+            A career guidance platform built around clarity, expert access, and better decisions.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="font-semibold text-white mb-4">Product</h3>
           <ul className="space-y-2">
-            <li><a href="#" className="hover:text-cyan-400 transition-colors">Features</a></li>
-            <li><a href="#" className="hover:text-cyan-400 transition-colors">Pricing</a></li>
-            <li><a href="#" className="hover:text-cyan-400 transition-colors">Roadmaps</a></li>
-            <li><a href="#" className="hover:text-cyan-400 transition-colors">Resources</a></li>
+            <li><a href="#features" className="hover:text-cyan-300 transition-colors">What it does</a></li>
+            <li><a href="#how-it-works" className="hover:text-cyan-300 transition-colors">How it works</a></li>
+            <li><a href="#pricing" className="hover:text-cyan-300 transition-colors">Platform scope</a></li>
+            <li><a href="#waitlist" className="hover:text-cyan-300 transition-colors">Join waitlist</a></li>
           </ul>
         </div>
+
         <div>
-          <h3 className="font-bold text-white mb-4">Company</h3>
+          <h3 className="font-semibold text-white mb-4">Audience</h3>
           <ul className="space-y-2">
-            <li><a href="#" className="hover:text-cyan-400 transition-colors">About</a></li>
-            <li><a href="#" className="hover:text-cyan-400 transition-colors">Blog</a></li>
-            <li><a href="#" className="hover:text-cyan-400 transition-colors">Careers</a></li>
-            <li><a href="#" className="hover:text-cyan-400 transition-colors">Press</a></li>
+            <li><a href="#waitlist" className="hover:text-cyan-300 transition-colors">Learners</a></li>
+            <li><a href="#waitlist" className="hover:text-cyan-300 transition-colors">Career switchers</a></li>
+            <li><a href="#waitlist" className="hover:text-cyan-300 transition-colors">Junior professionals</a></li>
+            <li><a href="#waitlist" className="hover:text-cyan-300 transition-colors">Experts</a></li>
           </ul>
         </div>
+
         <div>
-          <h3 className="font-bold text-white mb-4">Support</h3>
+          <h3 className="font-semibold text-white mb-4">Next</h3>
           <ul className="space-y-2">
-            <li><a href="#" className="hover:text-cyan-400 transition-colors">Help Center</a></li>
-            <li><a href="#" className="hover:text-cyan-400 transition-colors">Community</a></li>
-            <li><a href="#" className="hover:text-cyan-400 transition-colors">Contact</a></li>
-            <li><a href="#" className="hover:text-cyan-400 transition-colors">Status</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3 className="font-bold text-white mb-4">Legal</h3>
-          <ul className="space-y-2">
-            <li><a href="#" className="hover:text-cyan-400 transition-colors">Privacy</a></li>
-            <li><a href="#" className="hover:text-cyan-400 transition-colors">Terms</a></li>
-            <li><a href="#" className="hover:text-cyan-400 transition-colors">Cookie Policy</a></li>
-            <li><a href="#" className="hover:text-cyan-400 transition-colors">Licenses</a></li>
+            <li><span className="text-slate-400">Resume tools</span></li>
+            <li><span className="text-slate-400">Portfolio generation</span></li>
+            <li><span className="text-slate-400">Expert analytics</span></li>
+            <li><span className="text-slate-400">B2B partnerships</span></li>
           </ul>
         </div>
       </div>
-      <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-linear-to-br from-cyan-600 to-teal-600 flex items-center justify-center">
-            <Target className="text-white" size={16} />
-          </div>
-          <span className="font-bold text-white">CareerCoach</span>
-        </div>
-        <p className="text-gray-500 text-sm">© 2024 CareerCoach. All rights reserved.</p>
-        <div className="flex gap-6">
-          <a href="#" className="hover:text-cyan-400 transition-colors">Twitter</a>
-          <a href="#" className="hover:text-cyan-400 transition-colors">LinkedIn</a>
-          <a href="#" className="hover:text-cyan-400 transition-colors">GitHub</a>
+
+      <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p className="text-slate-500 text-sm">Designed to turn career uncertainty into informed momentum.</p>
+        <div className="flex gap-6 text-sm">
+          <a href="#waitlist" className="hover:text-cyan-300 transition-colors">Join waitlist</a>
+          <a href="#features" className="hover:text-cyan-300 transition-colors">Product</a>
+          <a href="#how-it-works" className="hover:text-cyan-300 transition-colors">Flow</a>
         </div>
       </div>
     </div>

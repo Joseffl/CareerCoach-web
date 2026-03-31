@@ -1,82 +1,57 @@
-import React from 'react';
-import { Star } from 'lucide-react';
+import { ArrowUpRight, GraduationCap, RefreshCcw, UserRoundSearch } from 'lucide-react';
+
+const scenarios = [
+  {
+    icon: GraduationCap,
+    title: 'For students and fresh graduates',
+    description: 'Get clarity on the right career path before committing your time and resources.',
+  },
+  {
+    icon: RefreshCcw,
+    title: 'For career switchers',
+    description: 'Understand what it takes to transition and how to do it the right way.',
+  },
+  {
+    icon: UserRoundSearch,
+    title: 'For junior professionals',
+    description: 'Identify the next step that will actually move your career forward.',
+  },
+  {
+    icon: UserRoundSearch,
+    title: 'Anyone Seeking Clarity and Direction',
+    description: 'Get clear, practical guidance to help you move forward with confidence.',
+  },
+];
 
 const TestimonialsSection = () => {
-  const testimonials = [
-    { 
-      quote: "I was drowning in Udemy courses. CareerCoach showed me exactly what to learn and in what order. Landed a frontend job in 4 months.", 
-      name: "Sarah M.", 
-      role: "Frontend Developer" 
-    },
-    { 
-      quote: "The resource rankings saved me thousands. I learned React from free YouTube videos that were better than the $200 course I almost bought.", 
-      name: "Marcus J.", 
-      role: "React Developer" 
-    },
-    { 
-      quote: "Finally, a roadmap based on real job postings, not someone's opinion from 2019. The job market insights are gold.", 
-      name: "Priya K.", 
-      role: "Full Stack Developer" 
-    },
-    { 
-      quote: "I love seeing my progress visually. The portfolio projects got me interviews. Best $15/month I've ever spent.", 
-      name: "Alex R.", 
-      role: "Software Engineer" 
-    },
-    { 
-      quote: "Went from zero coding to job offer in 5 months. The community validation gave me confidence I was on the right path.", 
-      name: "Jordan L.", 
-      role: "Junior Developer" 
-    },
-    { 
-      quote: "The skills assessment was humbling but accurate. No more learning things I already knew or skipping prerequisites.", 
-      name: "Taylor B.", 
-      role: "Backend Developer" 
-    }
-  ];
-
   return (
     <section className="py-20 px-6">
       <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
-        <h2 className="text-4xl font-bold text-center mb-16">
-          Success stories
-        </h2>
-        
-        {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-3 gap-6">
-          {testimonials.map((testimonial, idx) => (
-            <div 
-              key={idx} 
-              className="bg-gray-50 rounded-xl p-8 hover:shadow-lg transition-shadow"
-            >
-              {/* Star Rating */}
-              <div className="flex gap-1 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star 
-                    key={i} 
-                    size={18} 
-                    className="fill-yellow-400 text-yellow-400" 
-                  />
-                ))}
-              </div>
-              
-              {/* Quote */}
-              <p className="text-gray-700 mb-6 italic leading-relaxed">
-                "{testimonial.quote}"
-              </p>
-              
-              {/* Author Info */}
-              <div>
-                <div className="font-semibold text-gray-900">
-                  {testimonial.name}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-center mb-4 text-slate-950">Built for people trying to make the right move</h2>
+          <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+            Different people arrive with different goals, but the need is the same: clear direction from someone with real experience.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-4 gap-6">
+          {scenarios.map((scenario) => {
+            const IconComponent = scenario.icon;
+
+            return (
+              <div key={scenario.title} className="bg-slate-50 rounded-2xl p-8 hover:shadow-lg transition-shadow border border-slate-200">
+                <div className="w-14 h-14 rounded-2xl bg-cyan-100 text-cyan-700 flex items-center justify-center mb-6">
+                  <IconComponent size={26} />
                 </div>
-                <div className="text-sm text-gray-500">
-                  {testimonial.role}
-                </div>
+                <h3 className="text-2xl font-bold mb-3 text-slate-950">{scenario.title}</h3>
+                <p className="text-slate-600 mb-6 leading-relaxed">{scenario.description}</p>
+                {/* <div className="inline-flex items-center gap-2 text-cyan-700 font-semibold">
+                  Get clarity faster
+                  <ArrowUpRight size={18} />
+                </div> */}
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
