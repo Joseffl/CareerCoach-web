@@ -1,88 +1,164 @@
-import { ArrowRight, Check, Compass } from 'lucide-react';
+import { motion, useReducedMotion } from 'framer-motion';
+import { ArrowRight, BadgeCheck, BriefcaseBusiness, CalendarClock, Compass } from 'lucide-react';
+import MotionReveal from './MotionReveal';
 
-const pathItems = ['Discover the right path', 'Speak to verified experts', 'Move forward with clarity'];
+const socialProof = [
+  '127 sessions booked this month',
+  '4.9 average rating',
+  'Mentors from Google, Meta, Spotify',
+];
+
+const trustItems = [
+  { icon: BadgeCheck, label: 'Verified professionals' },
+  { icon: BriefcaseBusiness, label: 'Real-world experience' },
+  { icon: CalendarClock, label: 'Focused 1-on-1 sessions' },
+];
+
+const floatingNotes = [
+  {
+    title: 'Verified mentor',
+    text: 'Senior Product Manager at Google',
+    position: 'left-[-0.6rem] top-[1.5rem] sm:left-[-1.5rem] sm:top-[2.5rem]',
+    icon: BadgeCheck,
+    delay: 0.2,
+  },
+  {
+    title: 'Popular topics',
+    text: 'Career transitions • PM roadmap',
+    position: 'right-[-0.2rem] top-[3.5rem] sm:right-[-1.2rem] sm:top-[4.2rem]',
+    icon: Compass,
+    delay: 0.45,
+  },
+  {
+    title: 'Average rating',
+    text: '4.9 from early sessions',
+    position: 'left-[0.5rem] bottom-[1.25rem] sm:left-[-0.75rem] sm:bottom-[1.5rem]',
+    icon: CalendarClock,
+    delay: 0.7,
+  },
+];
 
 const HeroSection = () => {
-  return (
-    <section className="pt-28 sm:pt-32 pb-16 sm:pb-20 px-5 sm:px-6 relative overflow-hidden">
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-16 left-[8%] h-44 w-44 sm:h-56 sm:w-56 rounded-full bg-cyan-200/35 blur-3xl"></div>
-        <div className="absolute top-6 right-[10%] h-52 w-52 sm:h-64 sm:w-64 rounded-full bg-emerald-200/22 blur-3xl"></div>
-        <div className="absolute bottom-0 left-1/2 h-64 w-64 sm:h-72 sm:w-72 -translate-x-1/2 rounded-full bg-amber-100/30 blur-3xl"></div>
-      </div>
+  const prefersReducedMotion = useReducedMotion();
 
+  return (
+    <section className="pt-28 sm:pt-32 pb-18 sm:pb-24 px-5 sm:px-6 relative overflow-hidden bg-[#FFFCF8]">
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid lg:grid-cols-[1.02fr_0.98fr] gap-8 lg:gap-10 items-center">
-          <div className="animate-fadeInUp">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/75 border border-white/80 text-slate-700 text-sm font-medium mb-7 shadow-sm">
-              <Compass size={16} />
-              Career clarity meets expert access
+        <div className="grid lg:grid-cols-[0.96fr_1.04fr] gap-10 lg:gap-12 items-center">
+          <MotionReveal>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-[#EADFD3] text-[#1F2937] text-sm font-medium mb-7 shadow-[0_12px_30px_rgba(22,19,39,0.06)]">
+              <Compass size={16} className="text-[#E86A33]" />
+              Real professionals. Real career decisions.
             </div>
 
-            <h1 className="display-face text-[3.15rem] sm:text-6xl md:text-7xl leading-[0.94] text-slate-950 mb-6 max-w-4xl">
-              Stop guessing your future.
+            <h1 className="display-face text-[3.1rem] sm:text-6xl md:text-7xl leading-[0.93] text-[#18181B] mb-6 max-w-4xl">
+              Stop guessing your career path.
               <br />
-              Talk to people already living it.
+              <span className="text-[#C6511E]">Talk to people already in it.</span>
             </h1>
 
-            <p className="text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl mb-8">
-              Pathway helps students, career switchers, and early professionals understand a path, meet trusted experts, and book focused 1-on-1 guidance that turns confusion into direction.
+            <p className="text-lg md:text-xl text-[#667085] leading-relaxed max-w-2xl mb-8">
+              Get direct guidance from experienced professionals so you can make smarter career decisions faster.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 mb-10">
+            <div className="flex flex-col sm:flex-row gap-4 mb-8">
               <a
-                href="#waitlist"
-                className="w-full sm:w-auto px-7 py-4 bg-slate-950 text-white rounded-2xl font-semibold text-lg hover:bg-slate-800 transition-all inline-flex items-center justify-center gap-2 group"
+                href="#mentors"
+                className="w-full sm:w-auto px-7 py-4 bg-[#E86A33] text-white rounded-2xl font-semibold text-lg hover:bg-[#C6511E] transition-all inline-flex items-center justify-center gap-2 group shadow-[0_18px_50px_rgba(22,19,39,0.14)]"
               >
                 Find a Mentor
                 <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
               </a>
-              <a
-                href="#features"
-                className="w-full sm:w-auto px-7 py-4 border border-slate-300 text-slate-700 rounded-2xl font-semibold text-lg hover:bg-white/80 transition-all text-center"
+            </div>
+
+            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center text-sm text-[#667085] mb-8">
+              {socialProof.map((item) => (
+                <div key={item} className="inline-flex items-center gap-2">
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#E86A33]"></span>
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="grid gap-3 sm:grid-cols-3 max-w-3xl">
+              {trustItems.map((item, index) => {
+                const Icon = item.icon;
+
+                return (
+                  <div
+                    key={item.label}
+                    className="rounded-[1.5rem] border border-[#EADFD3] bg-white px-4 py-4 shadow-[0_16px_40px_rgba(22,19,39,0.06)]"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#FFF4EC] text-[#E86A33]">
+                        <Icon size={18} />
+                      </div>
+                      <p className="text-sm font-medium text-[#1F2937]">{item.label}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </MotionReveal>
+
+          <MotionReveal delay={0.12} className="relative">
+            <div className="relative mx-auto max-w-[32rem]">
+              <motion.div
+                className="relative overflow-hidden rounded-[2rem] border border-[#EADFD3] bg-white p-3 sm:p-4 shadow-[0_28px_80px_rgba(22,19,39,0.10)]"
+                initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.98 }}
+                whileInView={prefersReducedMotion ? undefined : { opacity: 1, scale: 1 }}
+                viewport={{ once: true, amount: 0.35 }}
+                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
               >
-                Become a Mentor
-              </a>
-            </div>
-
-            
-          </div>
-
-          <div className="relative animate-drift-in animation-delay-150">
-            <div className="">
-              <div className="relative overflow-hidden rounded-[1.85rem] bg-slate-950">
-                <img
-                  src="https://ik.imagekit.io/mags/CareerOS/Hero"
-                  alt="Professionals discussing career direction"
-                  className="h-[420px] sm:h-[520px] lg:h-[620px] w-full object-cover"
-                />
-
-                <div className="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
-                {/* <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6 md:p-7">
-                  <div className="max-w-md rounded-[1.6rem] bg-white/92 backdrop-blur-md p-5 shadow-[0_20px_60px_rgba(15,23,42,0.16)]">
-                    <p className="text-xs uppercase tracking-[0.22em] text-slate-400 mb-2">Why Pathway works</p>
-                    <h2 className="display-face text-3xl text-slate-950 mb-3">Real conversations create real momentum</h2>
-                    <p className="text-slate-600 leading-relaxed">
-                      People make better career decisions when they can ask honest questions, hear real experiences, and learn from someone already ahead of them.
-                    </p>
+                <div className="relative overflow-hidden rounded-[1.6rem] bg-[#1F2937]">
+                  <img
+                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1200&q=80"
+                    alt="Professional mentor portrait"
+                    className="h-[470px] sm:h-[560px] w-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1F2937]/26 via-transparent to-transparent"></div>
+                  <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
+                    <div className="inline-flex items-center gap-3 rounded-full border border-white/70 bg-white/90 px-4 py-2.5 text-sm text-[#1F2937] shadow-[0_16px_40px_rgba(22,19,39,0.16)] backdrop-blur-md">
+                      <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#FFF4EC] text-[#E86A33]">
+                        <BadgeCheck size={16} />
+                      </span>
+                    </div>
                   </div>
                 </div>
+              </motion.div>
 
-                <div className="absolute left-4 top-4 sm:left-6 sm:top-6 animate-float-slow">
-                  <div className="rounded-full bg-white/16 border border-white/20 px-4 py-2 backdrop-blur-md">
-                    <p className="text-xs uppercase tracking-[0.22em] text-white/80">Verified experts</p>
-                  </div>
-                </div>
+              {floatingNotes.map((note, index) => {
+                const Icon = note.icon;
 
-                <div className="absolute right-4 top-4 sm:right-6 sm:top-6 hidden sm:block animate-float-slow animation-delay-300">
-                  <div className="rounded-[1.2rem] bg-slate-950/70 border border-white/12 px-4 py-3 backdrop-blur-md">
-                    <p className="text-xs uppercase tracking-[0.2em] text-cyan-200 mb-1">Outcome</p>
-                    <p className="text-sm text-white">Clarity, confidence, and a next step you can act on.</p>
-                  </div>
-                </div> */}
-              </div>
+                return (
+                  <motion.div
+                    key={note.title}
+                    className={`absolute hidden sm:block ${note.position}`}
+                    initial={prefersReducedMotion ? false : { opacity: 0, y: 18 }}
+                    whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{ duration: 0.6, delay: note.delay, ease: [0.22, 1, 0.36, 1] }}
+                    animate={
+                      prefersReducedMotion
+                        ? undefined
+                        : {
+                            y: [0, index % 2 === 0 ? -12 : -9, 0],
+                          }
+                    }
+                    style={{ willChange: 'transform' }}
+                  >
+                    <div className="min-w-[188px] rounded-[1.4rem] border border-[#EADFD3] bg-white/96 px-4 py-3.5 shadow-[0_18px_45px_rgba(22,19,39,0.10)] backdrop-blur-md">
+                      <div className="mb-2 flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-[#E86A33]">
+                        <Icon size={14} />
+                        <span>{note.title}</span>
+                      </div>
+                      <p className="text-sm font-medium text-[#1F2937] leading-6">{note.text}</p>
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
-          </div>
+          </MotionReveal>
         </div>
       </div>
     </section>

@@ -1,10 +1,10 @@
 import { useMemo, useState } from 'react';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import MotionReveal from './MotionReveal';
 
 const initialForm = {
   name: '',
   email: '',
-  interest: 'user',
 };
 
 const CTASection = () => {
@@ -13,9 +13,9 @@ const CTASection = () => {
   const [message, setMessage] = useState('');
 
   const buttonLabel = useMemo(() => {
-    if (status === 'saving') return 'Joining...';
+    if (status === 'saving') return 'Saving Your Spot...';
     if (status === 'success') return 'You are on the waitlist';
-    return 'Join Waitlist';
+    return 'Get Early Access';
   }, [status]);
 
   const handleChange = (event) => {
@@ -50,7 +50,6 @@ const CTASection = () => {
       const nextEntry = {
         name,
         email,
-        interest: form.interest,
         createdAt: new Date().toISOString(),
       };
 
@@ -68,32 +67,32 @@ const CTASection = () => {
 
   return (
     <section id="waitlist" className="py-20 px-6">
-      <div className="max-w-6xl mx-auto rounded-[2.5rem] overflow-hidden bg-slate-950 shadow-[0_30px_110px_rgba(15,23,42,0.18)]">
-        <div className="grid lg:grid-cols-[0.95fr_1.05fr]">
+      <MotionReveal className="max-w-6xl mx-auto rounded-[2.7rem] overflow-hidden bg-[#1f1733] shadow-[0_30px_110px_rgba(22,19,39,0.18)]">
+        <div className="grid lg:grid-cols-[0.98fr_1.02fr]">
           <div className="p-8 md:p-12 lg:p-14 border-b lg:border-b-0 lg:border-r border-white/10">
-            <p className="text-sm uppercase tracking-[0.28em] text-cyan-300 mb-5">Join the waitlist</p>
+            <p className="text-sm uppercase tracking-[0.28em] text-orange-300 mb-5">Join the waitlist</p>
             <h2 className="display-face text-4xl md:text-6xl leading-none text-white mb-6">
-              Be first to experience a smarter way to build your career.
+              Join 840 people already on the list for early access.
             </h2>
-            <p className="text-lg text-slate-300 leading-relaxed mb-8 max-w-xl">
-              Join as a learner looking for clarity or as an expert ready to guide others. Pathway is being built for people who want better decisions, not more guessing.
+            <p className="text-lg text-white/75 leading-relaxed mb-8 max-w-xl">
+              Early access closes when we hit the next batch. Join now if you want first access to verified professionals and focused career conversations.
             </p>
 
             <div className="space-y-4">
               {[
-                'Discover a path worth pursuing',
-                'Connect with verified experts',
-                'Get practical guidance that moves you forward',
+                'Browse real mentor profiles',
+                'Talk to verified professionals',
+                'Get sharper next steps, faster',
               ].map((item) => (
-                <div key={item} className="flex items-center gap-3 text-slate-200">
-                  <CheckCircle2 className="text-cyan-300" size={18} />
+                <div key={item} className="flex items-center gap-3 text-white/88">
+                  <CheckCircle2 className="text-orange-300" size={18} />
                   <span>{item}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="bg-[#f7f2ea] p-8 md:p-12 lg:p-14">
+          <div className="bg-white p-8 md:p-12 lg:p-14">
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-2">
@@ -105,7 +104,7 @@ const CTASection = () => {
                   type="text"
                   value={form.name}
                   onChange={handleChange}
-                  className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3.5 text-slate-900 outline-none transition focus:border-slate-950"
+                  className="w-full rounded-2xl border border-orange-100 bg-white px-4 py-3.5 text-slate-900 outline-none transition focus:border-orange-400"
                   placeholder="Your full name"
                 />
               </div>
@@ -120,25 +119,9 @@ const CTASection = () => {
                   type="email"
                   value={form.email}
                   onChange={handleChange}
-                  className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3.5 text-slate-900 outline-none transition focus:border-slate-950"
+                  className="w-full rounded-2xl border border-orange-100 bg-white px-4 py-3.5 text-slate-900 outline-none transition focus:border-orange-400"
                   placeholder="you@example.com"
                 />
-              </div>
-
-              <div>
-                <label htmlFor="interest" className="block text-sm font-medium text-slate-700 mb-2">
-                  I am joining as
-                </label>
-                <select
-                  id="interest"
-                  name="interest"
-                  value={form.interest}
-                  onChange={handleChange}
-                  className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3.5 text-slate-900 outline-none transition focus:border-slate-950"
-                >
-                  <option value="user">A learner or career explorer</option>
-                  <option value="expert">An expert or mentor</option>
-                </select>
               </div>
 
               <button
@@ -150,19 +133,15 @@ const CTASection = () => {
                 {status !== 'success' && <ArrowRight size={18} />}
               </button>
 
-              {message && (
-                <p className={`text-sm ${status === 'error' ? 'text-rose-600' : 'text-emerald-700'}`}>
-                  {message}
-                </p>
-              )}
+              {message && <p className={`text-sm ${status === 'error' ? 'text-rose-600' : 'text-[#C6511E]'}`}>{message}</p>}
 
               <p className="text-sm text-slate-500">
-                Join the list to follow the launch and get early access when Pathway opens up.
+                Early access is limited to the next cohort. You will get updates as spots open.
               </p>
             </form>
           </div>
         </div>
-      </div>
+      </MotionReveal>
     </section>
   );
 };

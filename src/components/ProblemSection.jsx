@@ -1,88 +1,90 @@
-import { Compass, FileWarning, Lightbulb, SearchSlash } from 'lucide-react';
+import { Compass, Lightbulb, SearchSlash } from 'lucide-react';
+import MotionReveal from './MotionReveal';
 
 const problems = [
   {
     icon: SearchSlash,
-    title: 'Interested, but unsure',
-    text: 'A role sounds good on paper, but you still do not know what it is really like.',
+    title: 'Too much advice, not enough direction',
+    text: 'You can read threads, watch videos, and still feel no closer to the right next move.',
   },
   {
     icon: Lightbulb,
-    title: 'Learning, but guessing',
-    text: 'There is plenty of advice online, but not much clarity on what matters first.',
+    title: 'No access to real-world experience',
+    text: 'Most career content sounds smart, but it rarely tells you what the work is actually like.',
   },
   {
     icon: Compass,
-    title: 'Trying, but second-guessing',
-    text: 'You want to make the right move without wasting months on the wrong one.',
+    title: 'Expensive trial and error',
+    text: 'Wrong roles, wrong courses, and wrong assumptions can cost months of time and momentum.',
   },
 ];
 
-const signals = [
-  {
-    value: 'Real perspective',
-    label: 'Hear what the role is actually like from people doing it now',
-  },
-  {
-    value: 'Clear next steps',
-    label: 'Know what to learn, improve, or try next',
-  },
-  {
-    value: 'Less guesswork',
-    label: 'Move with more confidence and less confusion',
-  },
+const solutionSignals = [
+  'Verified professionals',
+  'Honest perspective from people inside the work',
+  'Better decisions with less guesswork',
 ];
 
 const ProblemSection = () => {
   return (
-    <section className="py-20 px-6 bg-[linear-gradient(180deg,#ffffff_0%,#f8fafc_100%)]">
+    <section id="why-people-get-stuck" className="py-20 px-6 bg-white">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <p className="text-sm uppercase tracking-[0.28em] text-cyan-700 mb-5">Why people get stuck</p>
-          <h2 className="display-face text-4xl md:text-6xl leading-none text-slate-950 mb-6">
-            Most people are not lazy.
+        <MotionReveal className="max-w-3xl mb-12">
+          <p className="text-sm uppercase tracking-[0.28em] text-orange-500 mb-5">Why people get stuck</p>
+          <h2 className="display-face text-4xl md:text-6xl leading-none text-slate-950 mb-5">
+            Smart people still make slow career decisions
             <br />
-            They are just trying to choose well with limited visibility.
+            when they cannot see what the path really looks like.
           </h2>
-          <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-            You can be serious, motivated, and still unsure which move makes sense.
+          <p className="text-lg text-slate-600 leading-relaxed">
+            The problem is rarely effort. It is a lack of context, access, and honest perspective.
           </p>
-        </div>
+        </MotionReveal>
 
-        <div className="grid md:grid-cols-3 gap-5 mb-10">
-          {problems.map((problem) => {
-            const IconComponent = problem.icon;
-            return (
-              <div
-                key={problem.title}
-                className="rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-[0_20px_50px_rgba(15,23,42,0.05)] transition-transform duration-300 hover:-translate-y-1"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-cyan-50 text-cyan-700">
-                    <IconComponent size={22} />
+        <div className="grid lg:grid-cols-[1.08fr_0.92fr] gap-6 items-start">
+          <div className="grid gap-5">
+            {problems.map((problem, index) => {
+              const Icon = problem.icon;
+              return (
+                <MotionReveal
+                  key={problem.title}
+                  delay={index * 0.12}
+                  className="rounded-[1.8rem] border px-6 py-6 shadow-[0_20px_50px_rgba(22,19,39,0.05)] bg-white border-[#EADFD3]"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white text-orange-500 shadow-sm">
+                      <Icon size={22} />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-slate-950 mb-1.5">{problem.title}</h3>
+                      <p className="text-slate-600 leading-relaxed">{problem.text}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-slate-950 mb-1.5">{problem.title}</h3>
-                    <p className="text-sm leading-6 text-slate-600">{problem.text}</p>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        <div className="rounded-[2rem] bg-slate-950 p-8 md:p-9">
-          <h3 className="display-face text-3xl md:text-4xl leading-none text-white text-center mb-8">
-            What helps is real context.
-          </h3>
-          <div className="grid md:grid-cols-3 gap-5">
-            {signals.map((signal) => (
-              <div key={signal.value} className="rounded-2xl border border-white/10 bg-white/5 p-5 text-center">
-                <div className="text-lg font-semibold text-cyan-300 mb-2">{signal.value}</div>
-                <div className="text-sm leading-6 text-slate-300">{signal.label}</div>
-              </div>
-            ))}
+                </MotionReveal>
+              );
+            })}
           </div>
+
+          <MotionReveal delay={0.18} className="rounded-[2rem] bg-slate-950 p-7 sm:p-8 shadow-[0_28px_80px_rgba(22,19,39,0.16)]">
+            <p className="text-xs uppercase tracking-[0.22em] text-orange-300 mb-4">What Pathway gives instead</p>
+            <h3 className="display-face text-3xl sm:text-4xl text-white leading-none mb-6">
+              Insider knowledge that helps you choose well.
+            </h3>
+            <div className="space-y-4 mb-6">
+              {solutionSignals.map((item) => (
+                <div key={item} className="flex items-start gap-3 text-white/88">
+                  <span className="mt-2 h-2.5 w-2.5 rounded-full bg-orange-400"></span>
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+            <a
+              href="#mentors"
+              className="inline-flex items-center rounded-2xl bg-white px-5 py-3 font-semibold text-slate-950 transition hover:bg-orange-50"
+            >
+              Browse Mentors
+            </a>
+          </MotionReveal>
         </div>
       </div>
     </section>

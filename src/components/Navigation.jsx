@@ -3,36 +3,35 @@ import { Link } from 'react-router-dom';
 
 const Navigation = ({ isMenuOpen, setIsMenuOpen, scrolled }) => {
   const links = [
-    { to: '/mentors', label: 'Find a Mentor' },
-    { to: '/how-it-works', label: 'How It Works' },
-    { to: '/#pricing', label: 'Pricing' },
+    { href: '#why-people-get-stuck', label: 'Why Pathway' },
+    { href: '#how-it-works', label: 'How It Works' },
+    { href: '#mentors', label: 'Mentors' },
   ];
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-[#fcfaf6]/92 backdrop-blur-xl shadow-sm' : 'bg-[#fcfaf6]/70 backdrop-blur-md'}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-[#FFFCF8]/92 backdrop-blur-xl shadow-sm' : 'bg-[#FFFCF8]/70 backdrop-blur-md'}`}>
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-slate-950 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-2xl bg-[#E86A33] flex items-center justify-center">
               <Compass className="text-white" size={20} />
             </div>
             <div>
-              <span className="text-xl font-semibold text-slate-950">Pathway</span>
-              <p className="text-xs text-slate-500 -mt-0.5">Career guidance marketplace</p>
+              <span className="text-xl font-semibold text-[#E86A33]">Pathway</span>
             </div>
           </Link>
 
           <div className="hidden md:flex items-center gap-8">
             {links.map((link) => (
-              <Link key={link.to} to={link.to} className="text-slate-700 hover:text-slate-950 transition-colors font-medium">
+              <a key={link.href} href={link.href} className="text-[#1F2937] hover:text-[#18181B] transition-colors font-medium">
                 {link.label}
-              </Link>
+              </a>
             ))}
             <a
-              href="#waitlist"
-              className="px-5 py-2.5 bg-slate-950 text-white rounded-2xl font-semibold hover:bg-slate-800 transition-all"
+              href="#mentors"
+              className="px-5 py-2.5 bg-[#E86A33] text-white rounded-2xl font-semibold hover:bg-[#C6511E] transition-all"
             >
-              Join Waitlist
+              Find a Mentor
             </a>
           </div>
 
@@ -43,24 +42,24 @@ const Navigation = ({ isMenuOpen, setIsMenuOpen, scrolled }) => {
       </div>
 
       {isMenuOpen && (
-        <div className="md:hidden bg-[#fcfaf6] border-t border-slate-200 shadow-lg">
+        <div className="md:hidden bg-[#FFFCF8] border-t border-[#EADFD3] shadow-lg">
           <div className="px-6 py-4 space-y-4">
             {links.map((link) => (
-              <Link
-                key={link.to}
-                to={link.to}
-                className="block text-slate-700 hover:text-slate-950 font-medium"
+              <a
+                key={link.href}
+                href={link.href}
+                className="block text-[#1F2937] hover:text-[#18181B] font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {link.label}
-              </Link>
+              </a>
             ))}
             <a
-              href="#waitlist"
-              className="block w-full px-6 py-2.5 bg-slate-950 text-white rounded-2xl font-semibold text-center"
+              href="#mentors"
+              className="block w-full px-6 py-2.5 bg-[#E86A33] text-white rounded-2xl font-semibold text-center"
               onClick={() => setIsMenuOpen(false)}
             >
-              Join Waitlist
+              Find a Mentor
             </a>
           </div>
         </div>
