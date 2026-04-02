@@ -40,7 +40,7 @@ const SolutionSection = () => {
             return (
               <div
                 key={layer.title}
-                className={`rounded-[2rem] p-8 border ${isDark ? 'bg-slate-950 text-white border-slate-950 shadow-[0_30px_80px_rgba(15,23,42,0.18)]' : 'bg-white/80 backdrop-blur-sm text-slate-900 border-white/70 shadow-[0_24px_60px_rgba(15,23,42,0.06)]'}`}
+                className={`rounded-4xl p-8 border ${isDark ? 'bg-slate-950 text-white border-slate-950 shadow-[0_30px_80px_rgba(15,23,42,0.18)]' : 'bg-white/80 backdrop-blur-sm text-slate-900 border-white/70 shadow-[0_24px_60px_rgba(15,23,42,0.06)]'}`}
               >
                 <p className={`text-sm uppercase tracking-[0.25em] mb-6 ${isDark ? 'text-cyan-300' : 'text-cyan-700'}`}>{layer.eyebrow}</p>
                 <h3 className={`display-face text-3xl leading-tight mb-5 ${isDark ? 'text-white' : 'text-slate-950'}`}>{layer.title}</h3>

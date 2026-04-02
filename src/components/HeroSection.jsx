@@ -1,6 +1,51 @@
+import React, { useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-import { ArrowRight, BadgeCheck, BriefcaseBusiness, CalendarClock, Compass } from 'lucide-react';
-import MotionReveal from './MotionReveal';
+import { Compass, Search } from 'lucide-react';
+import MotionReveal, { MotionItem, MotionStagger } from './MotionReveal';
+
+const chips = ['Product', 'Engineering', 'Design', 'Finance', 'Data', 'Marketing'];
+
+const mentors = [
+  {
+    initials: 'AA',
+    name: 'Ada Alex',
+    role: 'Senior Designer',
+    company: 'Google',
+    price: '$85/session',
+    rating: '4.9',
+    available: 'today',
+    color: '#1D4F91',
+    delay: 0.15,
+    top: 16,
+    left: 20,
+  },
+  {
+    initials: 'JA',
+    name: 'Joseph A.',
+    role: 'Senior Developer',
+    company: 'Stripe',
+    price: '$50/session',
+    rating: '4.9',
+    available: 'tomorrow',
+    color: '#C6511E',
+    delay: 0.3,
+    top: 152,
+    left: 56,
+  },
+  {
+    initials: 'FA',
+    name: 'Freya Alex',
+    role: 'Finance Professional',
+    company: 'Meta',
+    price: '$35/session',
+    rating: '5.0',
+    available: 'today',
+    color: '#173B34',
+    delay: 0.45,
+    top: 288,
+    left: 20,
+  },
+];
 
 const socialProof = [
   '127 sessions booked this month',
@@ -8,157 +53,194 @@ const socialProof = [
   'Mentors from Google, Meta, Spotify',
 ];
 
-const trustItems = [
-  { icon: BadgeCheck, label: 'Verified professionals' },
-  { icon: BriefcaseBusiness, label: 'Real-world experience' },
-  { icon: CalendarClock, label: 'Focused 1-on-1 sessions' },
-];
+const MentorCard = ({ mentor, prefersReducedMotion, style, className }) => (
+  <motion.div
+    className={className}
+    style={style}
+    initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
+    whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+    viewport={{ once: false, amount: 0.3 }}
+    transition={{ duration: 0.6, delay: mentor.delay, ease: [0.22, 1, 0.36, 1] }}
+  >
+    <div className="bg-white border border-[#EAE3D9] rounded-2xl px-4 py-4 flex items-center gap-3 shadow-[0_8px_32px_rgba(22,19,39,0.08)]">
+      {/* Avatar */}
+      <div
+        className="w-11 h-11 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0"
+        style={{ backgroundColor: mentor.color }}
+      >
+        {mentor.initials}
+      </div>
 
-const floatingNotes = [
-  {
-    title: 'Verified mentor',
-    text: 'Senior Product Manager at Google',
-    position: 'left-[-0.6rem] top-[1.5rem] sm:left-[-1.5rem] sm:top-[2.5rem]',
-    icon: BadgeCheck,
-    delay: 0.2,
-  },
-  {
-    title: 'Popular topics',
-    text: 'Career transitions • PM roadmap',
-    position: 'right-[-0.2rem] top-[3.5rem] sm:right-[-1.2rem] sm:top-[4.2rem]',
-    icon: Compass,
-    delay: 0.45,
-  },
-  {
-    title: 'Average rating',
-    text: '4.9 from early sessions',
-    position: 'left-[0.5rem] bottom-[1.25rem] sm:left-[-0.75rem] sm:bottom-[1.5rem]',
-    icon: CalendarClock,
-    delay: 0.7,
-  },
-];
+      {/* Name + role */}
+      <div className="flex-1 min-w-0">
+        <p className="font-semibold text-[0.9rem] text-[#18181B]">{mentor.name}</p>
+        <p className="text-[0.78rem] text-[#6B7280] mt-0.5">
+          {mentor.role}{' '}
+          <span className="text-[#9CA3AF]">at</span>{' '}
+          {mentor.company}
+        </p>
+      </div>
+
+      {/* Price + rating + availability */}
+      <div className="text-right flex-shrink-0">
+        <p className="font-semibold text-[0.9rem] text-[#18181B]">{mentor.price}</p>
+        <p className="text-[0.72rem] text-[#E86A33] mt-0.5">{'★'.repeat(5)} {mentor.rating}</p>
+        <span
+          className={[
+            'inline-flex items-center gap-1 mt-1 text-[0.68rem] font-medium px-2 py-0.5 rounded-full border',
+            mentor.available === 'today'
+              ? 'bg-[#F0FDF4] border-[#BBF7D0] text-[#16A34A]'
+              : 'bg-[#FFF7ED] border-[#FDE68A] text-[#B45309]',
+          ].join(' ')}
+        >
+          <span
+            className={[
+              'w-1.5 h-1.5 rounded-full',
+              mentor.available === 'today' ? 'bg-[#22C55E]' : 'bg-[#F59E0B]',
+            ].join(' ')}
+          />
+          Available {mentor.available}
+        </span>
+      </div>
+    </div>
+  </motion.div>
+);
 
 const HeroSection = () => {
   const prefersReducedMotion = useReducedMotion();
+  const [activeChip, setActiveChip] = useState(null);
 
   return (
-    <section className="pt-28 sm:pt-32 pb-18 sm:pb-24 px-5 sm:px-6 relative overflow-hidden bg-[#FFFCF8]">
+    <section className="pt-28 sm:pt-32 pb-16 sm:pb-24 px-5 sm:px-6 relative overflow-hidden bg-[#FFFCF8]">
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid lg:grid-cols-[0.96fr_1.04fr] gap-10 lg:gap-12 items-center">
+        <div className="grid lg:grid-cols-[0.96fr_1.04fr] gap-10 lg:gap-16 items-center">
+
+          {/* LEFT */}
           <MotionReveal>
+            {/* Eyebrow badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-[#EADFD3] text-[#1F2937] text-sm font-medium mb-7 shadow-[0_12px_30px_rgba(22,19,39,0.06)]">
               <Compass size={16} className="text-[#E86A33]" />
               Real professionals. Real career decisions.
             </div>
 
-            <h1 className="display-face text-[3.1rem] sm:text-6xl md:text-7xl leading-[0.93] text-[#18181B] mb-6 max-w-4xl">
-              Stop guessing your career path.
+            {/* Headline */}
+            <h1 className="display-face text-[2.6rem] sm:text-6xl md:text-7xl leading-[0.93] text-[#18181B] mb-6 max-w-4xl">
+              Talk to people who are already
               <br />
-              <span className="text-[#C6511E]">Talk to people already in it.</span>
+              <span className="text-[#C6511E]">where you want to be</span>
             </h1>
 
-            <p className="text-lg md:text-xl text-[#667085] leading-relaxed max-w-2xl mb-8">
-              Get direct guidance from experienced professionals so you can make smarter career decisions faster.
+            {/* Subheading */}
+            <p className="text-base md:text-xl text-[#667085] leading-relaxed max-w-2xl mb-8">
+              Book one-on-one sessions with real professionals for honest career advice, practical guidance, and clarity on your next step.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 mb-8">
-              <a
-                href="#mentors"
-                className="w-full sm:w-auto px-7 py-4 bg-[#E86A33] text-white rounded-2xl font-semibold text-lg hover:bg-[#C6511E] transition-all inline-flex items-center justify-center gap-2 group shadow-[0_18px_50px_rgba(22,19,39,0.14)]"
-              >
-                Find a Mentor
-                <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
-              </a>
+            {/* Search bar */}
+            <div className="flex items-center bg-white border border-[#EADFD3] rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(22,19,39,0.07)] max-w-[480px] mb-4">
+              <Search size={17} className="ml-4 text-[#A8A29E] flex-shrink-0" />
+              <input
+                type="text"
+                placeholder="What's your role?"
+                className="flex-1 px-3 py-3.5 text-base text-[#18181B] bg-transparent outline-none placeholder:text-[#A8A29E]"
+              />
+              <button className="bg-[#18181B] hover:bg-[#E86A33] transition-colors text-white text-sm font-semibold px-4 sm:px-5 py-3.5 whitespace-nowrap">
+                Find mentor
+              </button>
             </div>
 
-            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center text-sm text-[#667085] mb-8">
-              {socialProof.map((item) => (
-                <div key={item} className="inline-flex items-center gap-2">
-                  <span className="h-2.5 w-2.5 rounded-full bg-[#E86A33]"></span>
-                  <span>{item}</span>
-                </div>
+            {/* Filter chips */}
+            <div className="flex flex-wrap gap-2 mb-8 max-w-[480px]">
+              {chips.map((chip) => (
+                <button
+                  key={chip}
+                  onClick={() => setActiveChip(activeChip === chip ? null : chip)}
+                  className={[
+                    'px-3 py-1.5 rounded-full border text-sm transition-all',
+                    activeChip === chip
+                      ? 'bg-[#FFF4EC] border-[#E86A33] text-[#C6511E]'
+                      : 'bg-white border-[#EADFD3] text-[#57534E] hover:bg-[#FFF4EC] hover:border-[#E86A33] hover:text-[#C6511E]',
+                  ].join(' ')}
+                >
+                  {chip}
+                </button>
               ))}
             </div>
 
-            <div className="grid gap-3 sm:grid-cols-3 max-w-3xl">
-              {trustItems.map((item, index) => {
-                const Icon = item.icon;
-
-                return (
-                  <div
-                    key={item.label}
-                    className="rounded-[1.5rem] border border-[#EADFD3] bg-white px-4 py-4 shadow-[0_16px_40px_rgba(22,19,39,0.06)]"
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#FFF4EC] text-[#E86A33]">
-                        <Icon size={18} />
-                      </div>
-                      <p className="text-sm font-medium text-[#1F2937]">{item.label}</p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+            {/* Social proof */}
+            <MotionStagger
+              className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center text-sm text-[#667085]"
+              staggerChildren={0.12}
+            >
+              {socialProof.map((item) => (
+                <MotionItem key={item} className="inline-flex items-center gap-2">
+                  <span className="h-2 w-2 rounded-full bg-[#E86A33] flex-shrink-0" />
+                  <span>{item}</span>
+                </MotionItem>
+              ))}
+            </MotionStagger>
           </MotionReveal>
 
-          <MotionReveal delay={0.12} className="relative">
-            <div className="relative mx-auto max-w-[32rem]">
-              <motion.div
-                className="relative overflow-hidden rounded-[2rem] border border-[#EADFD3] bg-white p-3 sm:p-4 shadow-[0_28px_80px_rgba(22,19,39,0.10)]"
-                initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.98 }}
-                whileInView={prefersReducedMotion ? undefined : { opacity: 1, scale: 1 }}
-                viewport={{ once: true, amount: 0.35 }}
-                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          {/* RIGHT — desktop: staggered absolute cards | mobile: stacked list */}
+
+          {/* MOBILE: simple stacked cards shown below left content */}
+          <div className="flex flex-col gap-3 lg:hidden mt-2">
+            <p className="text-xs font-semibold uppercase tracking-widest text-[#9CA3AF]">
+              Featured mentors available now
+            </p>
+            {mentors.map((mentor) => (
+              <MentorCard
+                key={mentor.name}
+                mentor={mentor}
+                prefersReducedMotion={prefersReducedMotion}
+                className="w-full"
+              />
+            ))}
+            {/* Mobile "mentors from" tag */}
+            <motion.div
+              className="inline-flex items-center gap-2 mt-1"
+              initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }}
+              whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <div className="bg-white border border-[#EAE3D9] rounded-xl px-4 py-2.5 shadow-[0_4px_18px_rgba(22,19,39,0.07)] inline-flex items-center gap-2">
+                <Compass size={13} className="text-[#E86A33]" />
+                <span className="text-[0.72rem] text-[#6B7280]">Mentors from</span>
+                <span className="text-[0.72rem] font-semibold text-[#18181B]">Google · Meta · Stripe</span>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* DESKTOP: staggered absolute positioning */}
+          <div className="relative hidden lg:block">
+            <div className="relative h-[460px]">
+              {mentors.map((mentor) => (
+                <MentorCard
+                  key={mentor.name}
+                  mentor={mentor}
+                  prefersReducedMotion={prefersReducedMotion}
+                  className="absolute w-[340px]"
+                  style={{ top: mentor.top, left: mentor.left }}
+                />
+              ))}
+
+              {/* Floating "mentors from" tag */}
+              {/* <motion.div
+                className="absolute right-2 bottom-10"
+                initial={prefersReducedMotion ? false : { opacity: 0, y: 14 }}
+                whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.3 }}
+                transition={{ duration: 0.55, delay: 0.65, ease: [0.22, 1, 0.36, 1] }}
               >
-                <div className="relative overflow-hidden rounded-[1.6rem] bg-[#1F2937]">
-                  <img
-                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1200&q=80"
-                    alt="Professional mentor portrait"
-                    className="h-[470px] sm:h-[560px] w-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1F2937]/26 via-transparent to-transparent"></div>
-                  <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
-                    <div className="inline-flex items-center gap-3 rounded-full border border-white/70 bg-white/90 px-4 py-2.5 text-sm text-[#1F2937] shadow-[0_16px_40px_rgba(22,19,39,0.16)] backdrop-blur-md">
-                      <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#FFF4EC] text-[#E86A33]">
-                        <BadgeCheck size={16} />
-                      </span>
-                    </div>
-                  </div>
+                <div className="bg-white border border-[#EAE3D9] rounded-xl px-4 py-3 shadow-[0_4px_18px_rgba(22,19,39,0.07)] inline-flex items-center gap-2">
+                  <Compass size={14} className="text-[#E86A33]" />
+                  <span className="text-[0.75rem] text-[#6B7280]">Mentors from</span>
+                  <span className="text-[0.75rem] font-semibold text-[#18181B]">Google · Meta · Stripe</span>
                 </div>
-              </motion.div>
-
-              {floatingNotes.map((note, index) => {
-                const Icon = note.icon;
-
-                return (
-                  <motion.div
-                    key={note.title}
-                    className={`absolute hidden sm:block ${note.position}`}
-                    initial={prefersReducedMotion ? false : { opacity: 0, y: 18 }}
-                    whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.5 }}
-                    transition={{ duration: 0.6, delay: note.delay, ease: [0.22, 1, 0.36, 1] }}
-                    animate={
-                      prefersReducedMotion
-                        ? undefined
-                        : {
-                            y: [0, index % 2 === 0 ? -12 : -9, 0],
-                          }
-                    }
-                    style={{ willChange: 'transform' }}
-                  >
-                    <div className="min-w-[188px] rounded-[1.4rem] border border-[#EADFD3] bg-white/96 px-4 py-3.5 shadow-[0_18px_45px_rgba(22,19,39,0.10)] backdrop-blur-md">
-                      <div className="mb-2 flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-[#E86A33]">
-                        <Icon size={14} />
-                        <span>{note.title}</span>
-                      </div>
-                      <p className="text-sm font-medium text-[#1F2937] leading-6">{note.text}</p>
-                    </div>
-                  </motion.div>
-                );
-              })}
+              </motion.div> */}
             </div>
-          </MotionReveal>
+          </div>
+
         </div>
       </div>
     </section>

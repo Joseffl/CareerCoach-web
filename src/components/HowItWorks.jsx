@@ -1,4 +1,4 @@
-import MotionReveal from './MotionReveal';
+import MotionReveal, { MotionItem, MotionStagger } from './MotionReveal';
 
 const steps = [
   {
@@ -37,19 +37,18 @@ const HowItWorksSection = () => {
           </p>
         </MotionReveal>
 
-        <div className="grid lg:grid-cols-4 gap-6">
+        <MotionStagger className="grid lg:grid-cols-4 gap-6" staggerChildren={0.12}>
           {steps.map((step, idx) => (
-            <MotionReveal
+            <MotionItem
               key={step.number}
-              delay={idx * 0.12}
-              className={`rounded-[2rem] p-8 border shadow-[0_20px_50px_rgba(22,19,39,0.05)] transition-transform duration-300 hover:-translate-y-1 ${idx === 2 ? 'bg-orange-500 text-white border-orange-500' : 'bg-white border-orange-100'}`}
+              className={`rounded-4xl p-8 border shadow-[0_20px_50px_rgba(22,19,39,0.05)] transition-transform duration-300 hover:-translate-y-1 ${idx === 2 ? 'bg-orange-500 text-white border-orange-500' : 'bg-white border-orange-100'}`}
             >
               <div className={`text-sm uppercase tracking-[0.25em] mb-5 ${idx === 2 ? 'text-orange-50' : 'text-slate-400'}`}>Step {step.number}</div>
               <h3 className={`display-face text-3xl leading-tight mb-3 ${idx === 2 ? 'text-white' : 'text-slate-950'}`}>{step.title}</h3>
               <p className={`${idx === 2 ? 'text-orange-50' : 'text-slate-600'}`}>{step.description}</p>
-            </MotionReveal>
+            </MotionItem>
           ))}
-        </div>
+        </MotionStagger>
       </div>
     </section>
   );

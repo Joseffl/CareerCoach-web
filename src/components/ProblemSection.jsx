@@ -1,5 +1,5 @@
 import { Compass, Lightbulb, SearchSlash } from 'lucide-react';
-import MotionReveal from './MotionReveal';
+import MotionReveal, { MotionItem, MotionStagger } from './MotionReveal';
 
 const problems = [
   {
@@ -42,13 +42,12 @@ const ProblemSection = () => {
         </MotionReveal>
 
         <div className="grid lg:grid-cols-[1.08fr_0.92fr] gap-6 items-start">
-          <div className="grid gap-5">
+          <MotionStagger className="grid gap-5" staggerChildren={0.12}>
             {problems.map((problem, index) => {
               const Icon = problem.icon;
               return (
-                <MotionReveal
+                <MotionItem
                   key={problem.title}
-                  delay={index * 0.12}
                   className="rounded-[1.8rem] border px-6 py-6 shadow-[0_20px_50px_rgba(22,19,39,0.05)] bg-white border-[#EADFD3]"
                 >
                   <div className="flex items-start gap-4">
@@ -60,24 +59,24 @@ const ProblemSection = () => {
                       <p className="text-slate-600 leading-relaxed">{problem.text}</p>
                     </div>
                   </div>
-                </MotionReveal>
+                </MotionItem>
               );
             })}
-          </div>
+          </MotionStagger>
 
-          <MotionReveal delay={0.18} className="rounded-[2rem] bg-slate-950 p-7 sm:p-8 shadow-[0_28px_80px_rgba(22,19,39,0.16)]">
+          <MotionReveal delay={0.18} className="rounded-4xl bg-slate-950 p-7 sm:p-8 shadow-[0_28px_80px_rgba(22,19,39,0.16)]">
             <p className="text-xs uppercase tracking-[0.22em] text-orange-300 mb-4">What Pathway gives instead</p>
             <h3 className="display-face text-3xl sm:text-4xl text-white leading-none mb-6">
               Insider knowledge that helps you choose well.
             </h3>
-            <div className="space-y-4 mb-6">
+            <MotionStagger className="space-y-4 mb-6" staggerChildren={0.12}>
               {solutionSignals.map((item) => (
-                <div key={item} className="flex items-start gap-3 text-white/88">
+                <MotionItem key={item} className="flex items-start gap-3 text-white/88" y={16}>
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-orange-400"></span>
                   <span>{item}</span>
-                </div>
+                </MotionItem>
               ))}
-            </div>
+            </MotionStagger>
             <a
               href="#mentors"
               className="inline-flex items-center rounded-2xl bg-white px-5 py-3 font-semibold text-slate-950 transition hover:bg-orange-50"

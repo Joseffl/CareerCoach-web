@@ -38,7 +38,7 @@ const FeaturesSection = () => {
             return (
               <div
                 key={feature.title}
-                className={`rounded-[2rem] p-8 border shadow-[0_22px_60px_rgba(15,23,42,0.06)] transition-transform duration-300 hover:-translate-y-1 animate-drift-in ${idx === 1 ? 'animation-delay-150' : idx === 2 ? 'animation-delay-300' : ''} ${dark ? 'bg-slate-950 text-white border-slate-950' : 'bg-white/80 border-white/70'}`}
+                className={`rounded-4xl p-8 border shadow-[0_22px_60px_rgba(15,23,42,0.06)] transition-transform duration-300 hover:-translate-y-1 animate-drift-in ${idx === 1 ? 'animation-delay-150' : idx === 2 ? 'animation-delay-300' : ''} ${dark ? 'bg-slate-950 text-white border-slate-950' : 'bg-white/80 border-white/70'}`}
               >
                 <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 ${dark ? 'bg-white/10 text-cyan-300' : 'bg-slate-950 text-white'}`}>
                   <IconComponent size={26} />

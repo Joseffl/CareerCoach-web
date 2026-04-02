@@ -36,7 +36,7 @@ const PricingSection = () => (
           return (
             <div
               key={card.title}
-              className={`rounded-[2rem] p-8 border shadow-[0_18px_50px_rgba(15,23,42,0.05)] ${dark ? 'bg-slate-950 text-white border-slate-950' : 'bg-white/80 text-slate-900 border-white/70'}`}
+              className={`rounded-4xl p-8 border shadow-[0_18px_50px_rgba(15,23,42,0.05)] ${dark ? 'bg-slate-950 text-white border-slate-950' : 'bg-white/80 text-slate-900 border-white/70'}`}
             >
               <h3 className={`text-2xl font-semibold mb-4 ${dark ? 'text-white' : 'text-slate-950'}`}>{card.title}</h3>
               <p className={`text-lg leading-relaxed ${dark ? 'text-slate-300' : 'text-slate-600'}`}>{card.description}</p>

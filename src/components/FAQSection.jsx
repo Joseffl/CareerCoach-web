@@ -1,4 +1,4 @@
-import MotionReveal from './MotionReveal';
+import MotionReveal, { MotionItem, MotionStagger } from './MotionReveal';
 
 const faqs = [
   {
@@ -37,18 +37,17 @@ const FAQSection = () => {
           </p>
         </MotionReveal>
 
-        <div className="grid gap-4">
+        <MotionStagger className="grid gap-4" staggerChildren={0.1}>
           {faqs.map((faq, index) => (
-            <MotionReveal
+            <MotionItem
               key={faq.question}
-              delay={index * 0.1}
               className="rounded-[1.8rem] border border-orange-100 bg-white px-6 py-6 shadow-[0_20px_50px_rgba(22,19,39,0.05)]"
             >
               <h3 className="text-xl font-semibold text-slate-950 mb-2">{faq.question}</h3>
               <p className="text-slate-600 leading-relaxed">{faq.answer}</p>
-            </MotionReveal>
+            </MotionItem>
           ))}
-        </div>
+        </MotionStagger>
       </div>
     </section>
   );

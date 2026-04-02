@@ -29,8 +29,10 @@ function ScrollToSection() {
 }
 
 function AppContent() {
+  const location = useLocation();
+
   return (
-    <>
+    <main key={location.pathname}>
       <HeroSection />
       <ProblemSection />
       <FeaturedMentors />
@@ -39,7 +41,7 @@ function AppContent() {
       <FAQSection />
       <CTASection />
       <Footer />
-    </>
+    </main>
   );
 }
 

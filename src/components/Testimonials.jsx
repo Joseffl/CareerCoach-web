@@ -1,5 +1,5 @@
 import { Star } from 'lucide-react';
-import MotionReveal from './MotionReveal';
+import MotionReveal, { MotionItem, MotionStagger } from './MotionReveal';
 
 const testimonials = [
   {
@@ -39,12 +39,11 @@ const TestimonialsSection = () => {
           </p>
         </MotionReveal>
 
-        <div className="grid lg:grid-cols-3 gap-6">
+        <MotionStagger className="grid lg:grid-cols-3 gap-6" staggerChildren={0.12}>
           {testimonials.map((testimonial, index) => (
-            <MotionReveal
+            <MotionItem
               key={testimonial.name}
-              delay={index * 0.12}
-              className="rounded-[2rem] border border-orange-100 bg-white p-7 shadow-[0_20px_55px_rgba(22,19,39,0.06)]"
+              className="rounded-4xl border border-orange-100 bg-white p-7 shadow-[0_20px_55px_rgba(22,19,39,0.06)]"
             >
               <div className="flex items-center gap-1 text-orange-500 mb-4">
                 {Array.from({ length: 5 }).map((_, starIndex) => (
@@ -62,9 +61,9 @@ const TestimonialsSection = () => {
               <div className="rounded-[1.2rem] bg-orange-50 px-4 py-3 text-sm font-medium text-orange-700">
                 {testimonial.outcome}
               </div>
-            </MotionReveal>
+            </MotionItem>
           ))}
-        </div>
+        </MotionStagger>
       </div>
     </section>
   );
