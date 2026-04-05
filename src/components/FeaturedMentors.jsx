@@ -102,11 +102,11 @@ const FeaturedMentors = () => {
           <div className="max-w-3xl">
             <p className="text-sm uppercase tracking-[0.28em] text-orange-500 mb-5">Featured Mentors</p>
             <h2 className="display-face text-4xl md:text-6xl leading-none text-slate-950 mb-4">
-              Real professionals. Clear pricing. Specific expertise.
+              Talk to seasoned professionals. Specific expertise.
             </h2>
-            <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
+            {/* <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
               Sample profiles for now, but built to feel like a real marketplace people can trust.
-            </p>
+            </p> */}
           </div>
 
           <a

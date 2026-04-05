@@ -7,7 +7,7 @@ const faqs = [
   },
   {
     question: 'Are mentors vetted?',
-    answer: 'Yes. We are building Pathway around verified professionals with real work experience, not generic internet advice.',
+    answer: 'Yes. We are building Pathlivo around verified professionals with real work experience, not generic internet advice.',
   },
   {
     question: 'What do I actually ask in a session?',

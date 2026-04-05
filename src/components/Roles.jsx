@@ -17,7 +17,7 @@ const RolesSection = () => {
       <div className="max-w-7xl mx-auto text-center">
         <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Start with the career paths people ask about most</h2>
         <p className="text-xl text-cyan-50 mb-12 max-w-3xl mx-auto">
-          Pathway is built for emerging-market realities, but useful across global career tracks where practical guidance matters more than generic content.
+          Pathlivo is built for emerging-market realities, but useful across global career tracks where practical guidance matters more than generic content.
         </p>
 
         <div className="grid md:grid-cols-4 gap-4">

@@ -24,7 +24,7 @@ const FeaturesSection = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-14">
           <p className="text-sm uppercase tracking-[0.28em] text-cyan-700 mb-5">Core experience</p>
-          <h2 className="display-face text-4xl md:text-6xl leading-none text-slate-950 mb-6">What people can do on Pathway</h2>
+          <h2 className="display-face text-4xl md:text-6xl leading-none text-slate-950 mb-6">What people can do on Pathlivo</h2>
           <p className="text-xl text-slate-600 leading-relaxed">
             Every part of the product is designed to help users make better career decisions, faster and with more confidence.
           </p>

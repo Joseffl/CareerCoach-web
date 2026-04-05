@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Navigation = ({ isMenuOpen, setIsMenuOpen, scrolled }) => {
   const links = [
-    { href: '#why-people-get-stuck', label: 'Why Pathway' },
+    { href: '#why-people-get-stuck', label: 'Why Pathlivo' },
     { href: '#how-it-works', label: 'How It Works' },
     { href: '#mentors', label: 'Mentors' },
   ];
@@ -17,7 +17,7 @@ const Navigation = ({ isMenuOpen, setIsMenuOpen, scrolled }) => {
               <Compass className="text-white" size={20} />
             </div>
             <div>
-              <span className="text-xl font-semibold text-[#E86A33]">Pathway</span>
+              <span className="text-xl font-semibold text-[#E86A33]">Pathlivo</span>
             </div>
           </Link>
 

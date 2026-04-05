@@ -65,7 +65,7 @@ const ProblemSection = () => {
           </MotionStagger>
 
           <MotionReveal delay={0.18} className="rounded-4xl bg-slate-950 p-7 sm:p-8 shadow-[0_28px_80px_rgba(22,19,39,0.16)]">
-            <p className="text-xs uppercase tracking-[0.22em] text-orange-300 mb-4">What Pathway gives instead</p>
+            <p className="text-xs uppercase tracking-[0.22em] text-orange-300 mb-4">What Pathlivo gives instead</p>
             <h3 className="display-face text-3xl sm:text-4xl text-white leading-none mb-6">
               Insider knowledge that helps you choose well.
             </h3>

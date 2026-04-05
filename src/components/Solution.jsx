@@ -29,7 +29,7 @@ const SolutionSection = () => {
             A complete product story, built around one powerful core.
           </h2>
           <p className="text-xl text-slate-600 leading-relaxed max-w-3xl">
-            Pathway starts by helping people understand their options. The heart of the product is expert access. Over time, that foundation grows into deeper career tools.
+            Pathlivo starts by helping people understand their options. The heart of the product is expert access. Over time, that foundation grows into deeper career tools.
           </p>
         </div>
 

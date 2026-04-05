@@ -1,28 +1,33 @@
-import { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import './App.css';
-import Navigation from './components/Navigation';
-import HeroSection from './components/HeroSection';
-import ProblemSection from './components/ProblemSection';
-import HowItWorksSection from './components/HowItWorks';
-import FeaturedMentors from './components/FeaturedMentors';
-import TestimonialsSection from './components/Testimonials';
-import FAQSection from './components/FAQSection';
-import CTASection from './components/CTA';
-import Footer from './components/Footer';
+import { useState, useEffect } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
+import "./App.css";
+import Navigation from "./components/Navigation";
+import HeroSection from "./components/HeroSection";
+import ProblemSection from "./components/ProblemSection";
+import HowItWorksSection from "./components/HowItWorks";
+import FeaturedMentors from "./components/FeaturedMentors";
+import TestimonialsSection from "./components/Testimonials";
+import FAQSection from "./components/FAQSection";
+import CTASection from "./components/CTA";
+import Footer from "./components/Footer";
 
 function ScrollToSection() {
   const location = useLocation();
 
   useEffect(() => {
-    const section = location.pathname.replace('/', '');
+    const section = location.pathname.replace("/", "");
     if (!section) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: "smooth" });
       return;
     }
 
     const el = document.getElementById(section);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
   }, [location]);
 
   return null;
@@ -34,9 +39,9 @@ function AppContent() {
   return (
     <main key={location.pathname}>
       <HeroSection />
-      <ProblemSection />
-      <FeaturedMentors />
       <HowItWorksSection />
+      <FeaturedMentors />
+      <ProblemSection />
       <TestimonialsSection />
       <FAQSection />
       <CTASection />
@@ -51,8 +56,8 @@ function App() {
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
@@ -75,7 +80,11 @@ function App() {
           }
         `}</style>
 
-        <Navigation isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} scrolled={scrolled} />
+        <Navigation
+          isMenuOpen={isMenuOpen}
+          setIsMenuOpen={setIsMenuOpen}
+          scrolled={scrolled}
+        />
         <ScrollToSection />
 
         <Routes>

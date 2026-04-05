@@ -17,7 +17,7 @@ const mentors = [
     color: '#1D4F91',
     delay: 0.15,
     top: 16,
-    left: 20,
+    right: 88,
   },
   {
     initials: 'JA',
@@ -30,7 +30,7 @@ const mentors = [
     color: '#C6511E',
     delay: 0.3,
     top: 152,
-    left: 56,
+    right: 32,
   },
   {
     initials: 'FA',
@@ -43,7 +43,7 @@ const mentors = [
     color: '#173B34',
     delay: 0.45,
     top: 288,
-    left: 20,
+    right: 88,
   },
 ];
 
@@ -167,7 +167,7 @@ const HeroSection = () => {
             </div>
 
             {/* Social proof */}
-            <MotionStagger
+            {/* <MotionStagger
               className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center text-sm text-[#667085]"
               staggerChildren={0.12}
             >
@@ -177,7 +177,7 @@ const HeroSection = () => {
                   <span>{item}</span>
                 </MotionItem>
               ))}
-            </MotionStagger>
+            </MotionStagger> */}
           </MotionReveal>
 
           {/* RIGHT — desktop: staggered absolute cards | mobile: stacked list */}
@@ -213,14 +213,14 @@ const HeroSection = () => {
 
           {/* DESKTOP: staggered absolute positioning */}
           <div className="relative hidden lg:block">
-            <div className="relative h-[460px]">
+            <div className="relative h-[460px] w-full">
               {mentors.map((mentor) => (
                 <MentorCard
                   key={mentor.name}
                   mentor={mentor}
                   prefersReducedMotion={prefersReducedMotion}
                   className="absolute w-[340px]"
-                  style={{ top: mentor.top, left: mentor.left }}
+                  style={{ top: mentor.top, right: mentor.right }}
                 />
               ))}
 

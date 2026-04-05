@@ -9,7 +9,7 @@ const Footer = () => (
             <div className="w-9 h-9 rounded-2xl bg-white text-slate-950 flex items-center justify-center">
               <Compass size={18} />
             </div>
-            <span className="text-lg font-semibold text-white">Pathway</span>
+            <span className="text-lg font-semibold text-white">Pathlivo</span>
           </div>
           <p className="text-slate-400 leading-relaxed max-w-sm">
             A career platform built around expert access, real-world perspective, and better decisions.
